@@ -1,0 +1,19 @@
+{
+  "name": "websocket-server",
+  "version": "1.0.0",
+  "description": "Sample Node server (WS)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shekharaditya7/websocket-server.git"
+  },
+  "author": "Aditya Shekhar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shekharaditya7/websocket-server/issues"
+  },
+  "homepage": "https://github.com/shekharaditya7/websocket-server#readme"
+}
