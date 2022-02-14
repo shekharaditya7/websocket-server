@@ -4,7 +4,8 @@
   "description": "Sample Node server (WS)",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/shekharaditya7/websocket-server/issues"
   },
-  "homepage": "https://github.com/shekharaditya7/websocket-server#readme"
+  "homepage": "https://github.com/shekharaditya7/websocket-server#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  }
 }
