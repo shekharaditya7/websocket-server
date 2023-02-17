@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
-const http = require("http");
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
+const server = app.listen(8080);
+
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 
 app.get("/", (req, res) => {
   res.send("Server is healthy");
@@ -14,15 +18,7 @@ var connections = {};
 io.on("connection", (socket) => {
   connections[socket.id] = socket.id;
   console.log(socket.id, "connected");
-});
-
-io.on("connection", (socket) => {
-  console.log("a user connected");
   socket.on("disconnect", () => {
-    console.log("user disconnected");
+    console.log(socket.id, "user disconnected");
   });
-});
-
-server.listen(8080, () => {
-  console.log("listening on *: 8080");
 });
