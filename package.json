@@ -4,7 +4,7 @@
   "description": "Sample Node server (WS)",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo No test specified\" && exit 0",
+    "test": "exit 0",
     "dev": "NODE_ENV=development nodemon src/index.js",
     "start": "NODE_ENV=production node src/index.js"
   },
