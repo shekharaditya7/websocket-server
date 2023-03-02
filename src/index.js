@@ -18,30 +18,32 @@ app.get("/", (req, res) => {
   res.send("Server is healthy");
 });
 
-const createMessage = ({ socketId, text, type }) => {
-  return JSON.stringify({ socketId, text, type });
+const createMessage = ({ socketId, text, type, name }) => {
+  return JSON.stringify({ socketId, text, type, name });
 };
 
 io.on("connection", (socket) => {
   const roomId = socket.handshake.query.roomId;
+  const name = socket.handshake.query.name;
   if (roomId) {
     socket.join(roomId);
     socket.to(roomId).emit(
       "messageFromServer",
       createMessage({
         socketId: socket.id,
-        text: "Someone joined the chat",
+        text: `${name} joined the chat`,
         type: "server",
       })
     );
   }
-  socket.on("messageFromClient", (msg) => {
+  socket.on("messageFromClient", ({ text, name } = {}) => {
     socket.to(roomId).emit(
       "messageFromServer",
       createMessage({
         socketId: socket.id,
-        text: msg,
+        text,
         type: "user",
+        name,
       })
     );
   });
